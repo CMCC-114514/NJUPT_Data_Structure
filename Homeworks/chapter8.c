@@ -94,7 +94,7 @@ status search(studentHT *ht, int key) {
 
     do {
         if (ht->empty[pos]) {return false;}      //对应的位置为空返回false
-        if (ht->students[pos].id / 10 == key) {return pos;}  //找到元素返回位置
+        if (ht->students[pos].id == key) {return pos;}  //找到元素返回位置
         pos = (pos + 1) % ht->length;    //设置下一个搜索位置
     } while (pos != anchor);
 
@@ -176,6 +176,13 @@ int main() {
     insertStudent(&ht, s5);
 
     output(&ht);        //输出散列表
+
+    status flag = search(&ht, 60);
+    if (flag)
+    {
+        printf("学号60的学生在散列表中");
+    }
+    
     destroy(&ht);
 
     return 0;
