@@ -125,6 +125,8 @@ status removeEdge(lGragh *lg, int u, int v) {
 void displayLGraph(lGragh *lg) {
     eNode *p;
 
+    printf("顶点 邻接点\n");
+
     for (int i = 0; i < lg->n; i++)
     {
         printf("%d -> ", i);      //输出所有顶点
@@ -132,7 +134,7 @@ void displayLGraph(lGragh *lg) {
         p = lg->a[i];       //p指向顶点链表的表头
         while (p)
         {
-            printf("%d ", p->adjVex);
+            printf("%d ", p->adjVex);   //输出每个顶点的邻接顶点
             p = p->nextArc;
         }
         
@@ -147,7 +149,7 @@ int main() {
     lGragh lg;
     init(&lg, n);       //生成含有6个顶点的邻接表
     
-    insertEdge(&lg, 0, 1, 1);       //插入亿点边
+    insertEdge(&lg, 0, 1, 1);       //插入亿条边
     insertEdge(&lg, 0, 2, 1);
     insertEdge(&lg, 1, 2, 1);
     insertEdge(&lg, 1, 3, 1);
@@ -162,8 +164,6 @@ int main() {
     insertEdge(&lg, 4, 2, 1);
     insertEdge(&lg, 5, 1, 1);
     insertEdge(&lg, 5, 2, 1);
-
-
 
     displayLGraph(&lg);     //输出邻接表
 
