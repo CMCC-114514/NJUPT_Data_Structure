@@ -150,12 +150,13 @@ void output(hashTable *ht) {
 int main() {
     hashTable ht;
 
-    create(&ht, 9);
+    create(&ht, 9);     //创建长度为9的散列表
 
-    for (int i = 15; i < 15 + ht.length; i++)
+    for (int i = 15; i < 15 + ht.length; i++)   //插入9个数据
     {
         insertElement(&ht, i);
     }
 
-    output(&ht);
+    output(&ht);    //输出散列表
+    destroy(&ht);
 }
