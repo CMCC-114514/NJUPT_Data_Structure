@@ -167,7 +167,7 @@ int main() {
     setInfo(&s5, 60, 'E', 'C');
 
     studentHT ht;       //创建散列表
-    create(&ht, 7);
+    create(&ht, 10);
 
     insertStudent(&ht, s1);     //插入学生对象
     insertStudent(&ht, s2);
