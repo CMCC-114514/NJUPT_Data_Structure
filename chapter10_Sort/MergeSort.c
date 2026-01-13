@@ -1,6 +1,11 @@
 #include "list.h"
 
-//序列二路合并
+/*
+    二路合并排序：
+    将元素看作n个待合并的有序序列，有序序列两两合并，然在合并后的序列中排序
+    直到所有元素属于同一个有序序列
+*/
+
 void merge(list *list, entry *temp, int low, int n1, int n2) {
     //n1和n2表示长度对应长度的相邻子序列
     int i = low, j = low+n1;    //i和j初始时指向两个序列的第一个元素

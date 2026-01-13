@@ -80,58 +80,6 @@ int search(hashTable *hashTable, int key) {
     return false;   //找完整个散列表都没找到，返回false
 }
 
-//插入元素
-Bool insertElement(hashTable *ht, int key) {
-    int anchor, i;
-
-    if (isFull(ht))         //如果散列表已满，返回false
-    {
-        return false;
-    }
-
-    if (search(ht, key) != false)       //如果待插入元素已存在，返回false
-    {
-        return false;
-    }
-    
-    anchor = i = hash(ht->length, key);     //计算基地址
-
-    do
-    {
-        if (ht->elements[i] == neverUsed)       //若当前位置未被占用，将新元素存入当前位置
-        {
-            ht->elements[i] = key;
-            ht->empty[i] = false;
-            ht->num++;
-            return true;
-        }
-        i = (i + 1) % ht->length;       //使用线性探查法考察下一个位置
-    } while (i != anchor);
-    
-    return false;
-}
-
-//删除元素
-Bool deleteElement(hashTable *ht, int key) {
-
-    if (isEmpty(ht))            //若散列表为空，返回false
-    {
-        return false;
-    }
-
-    int pos = search(ht, key);      //查找元素
-
-    if (pos == false)       //若元素不存在，返回false
-    {
-        return false;
-    } 
-    else {                  //存在就删除元素并返回true
-        ht->elements[pos] = neverUsed;
-        ht->num--;
-        return true;  
-    }
-}
-
 //输出散列表
 void output(hashTable *ht) {
     for (int i = 0; i < ht->length; i++)
@@ -144,19 +92,4 @@ void output(hashTable *ht) {
         printf("%5d", ht->empty[i]);
     }
     printf("\n");
-}
-
-//主函数
-int main() {
-    hashTable ht;
-
-    create(&ht, 9);     //创建长度为9的散列表
-
-    for (int i = 15; i < 15 + ht.length; i++)   //插入9个数据
-    {
-        insertElement(&ht, i);
-    }
-
-    output(&ht);    //输出散列表
-    destroy(&ht);
 }
